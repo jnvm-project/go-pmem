@@ -1732,6 +1732,8 @@ func gcMarkTermination(nextTriggerRatio float64) {
 
 	// Compute overall GC CPU utilization.
 	totalCpu := sched.totaltime + (now-sched.procresizetime)*int64(gomaxprocs)
+	memstats.total_cpu = float64(totalCpu)
+	memstats.gc_total_time = float64(work.totaltime)
 	memstats.gc_cpu_fraction = float64(work.totaltime) / float64(totalCpu)
 
 	// Reset sweep state.

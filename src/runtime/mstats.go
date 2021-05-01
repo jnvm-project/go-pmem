@@ -67,6 +67,8 @@ type mstats struct {
 	numgc           uint32
 	numforcedgc     uint32  // number of user-forced GCs
 	gc_cpu_fraction float64 // fraction of CPU time used by GC
+	total_cpu	float64
+	gc_total_time	float64
 	enablegc        bool
 	debuggc         bool
 
@@ -392,6 +394,9 @@ type MemStats struct {
 	// This is the same as the fraction of CPU reported by
 	// GODEBUG=gctrace=1.
 	GCCPUFraction float64
+
+	TotalCpu float64
+	GCTotalTime float64
 
 	// EnableGC indicates that GC is enabled. It is always true,
 	// even if GOGC=off.
